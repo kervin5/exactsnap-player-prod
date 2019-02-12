@@ -1,4 +1,5 @@
 const electron = require('electron');
+const {autoUpdater} = require("electron-updater");
 const ipcMain = electron.ipcMain;
 // Module to control application life.
 const app = electron.app;
@@ -43,9 +44,21 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null
-    })
-}
+    });
 
+    setInterval(()=>{
+        autoUpdater.checkForUpdates();
+    },300000);
+
+}
+//Update checker
+autoUpdater.on('update-downloaded', (info) => {
+    win.webContents.send('updateReady')
+});
+
+ipcMain.on("quitAndInstall", (event, arg) => {
+    autoUpdater.quitAndInstall();
+})
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
