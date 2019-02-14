@@ -36,7 +36,7 @@ function createWindow() {
     mainWindow.loadURL(startUrl);
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
@@ -48,7 +48,7 @@ function createWindow() {
 
     setInterval(()=>{
         autoUpdater.checkForUpdates();
-    },15000);
+    },90000);
 
 }
 //Update checker
