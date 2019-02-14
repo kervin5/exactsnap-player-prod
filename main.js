@@ -36,7 +36,7 @@ function createWindow() {
     mainWindow.loadURL(startUrl);
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
@@ -48,17 +48,23 @@ function createWindow() {
 
     setInterval(()=>{
         autoUpdater.checkForUpdates();
-    },300000);
+    },15000);
 
 }
 //Update checker
 autoUpdater.on('update-downloaded', (info) => {
-    win.webContents.send('updateReady')
+    // win.webContents.send('updateReady');
+    console.log("Update",info);
+    autoUpdater.quitAndInstall();
 });
 
-ipcMain.on("quitAndInstall", (event, arg) => {
-    autoUpdater.quitAndInstall();
-})
+// ipcMain.on("quitAndInstall", (event, arg) => {
+//     // autoUpdater.quitAndInstall();
+// });
+
+// ipcMain.on("updateReady", (event, arg) => {
+//     // autoUpdater.quitAndInstall();
+// });
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
