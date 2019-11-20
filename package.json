@@ -1,6 +1,6 @@
 {
   "name": "exactsnap-player",
-  "version": "2.1",
+  "version": "2.5.0",
   "description": "A PC based signage player for Exact Staff",
   "main": "main.js",
   "scripts": {

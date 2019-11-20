@@ -1,16 +1,16 @@
 const electron = require('electron');
-const {autoUpdater} = require("electron-updater");
 const ipcMain = electron.ipcMain;
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-
 const path = require('path');
 const url = require('url');
 const registerRoutes = require('./backend/electron-api');
 
-const {refresh}  = require("./backend/models/post");
+//Modules required to initialize content
+const jobs = require("./backend/controllers/jobs");
+const posts = require("./backend/controllers/posts");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -18,15 +18,16 @@ let mainWindow;
 
 registerRoutes();
 
-startPostsSync();
-
 function createWindow() {
+
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 800, height: 600,frame: false});
+    mainWindow = new BrowserWindow({width: 800, height: 600,frame: false,  "webPreferences":{
+        "webSecurity":false
+      }});
 
     mainWindow.setFullScreen(true);
 
-    const startUrl = url.format({
+    const startUrl = process.env.ELECTRON_START_URL || url.format({
         pathname: path.join(__dirname, '/build/index.html'),
         protocol: 'file:',
         slashes: true
@@ -44,27 +45,12 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null
-    });
+    })
 
-    setInterval(()=>{
-        autoUpdater.checkForUpdates();
-    },90000);
-
+    jobs.initialize(mainWindow);
+    posts.initialize(mainWindow);
 }
-//Update checker
-autoUpdater.on('update-downloaded', (info) => {
-    // win.webContents.send('updateReady');
-    console.log("Update",info);
-    autoUpdater.quitAndInstall();
-});
 
-// ipcMain.on("quitAndInstall", (event, arg) => {
-//     // autoUpdater.quitAndInstall();
-// });
-
-// ipcMain.on("updateReady", (event, arg) => {
-//     // autoUpdater.quitAndInstall();
-// });
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -86,27 +72,6 @@ app.on('activate', function () {
         createWindow()
     }
 });
-
-function startPostsSync() {
-
-
-        refresh().then((result)=>{
-            mainWindow.webContents.send('posts-loaded', result);
-
-            setInterval(async ()=>{
-
-                if(true) {
-                    let postsDidChange = await refresh();
-
-                    if(postsDidChange.status) {
-                        mainWindow.webContents.send('posts-changed', postsDidChange);
-                    }
-                }
-
-                // mainWindow.webContents.send('posts-changed', postsDidChange);
-            },5000);
-        });
-}
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
