@@ -1,5 +1,5 @@
 const electron = require("electron");
-const ipcMain = electron.ipcMain;
+const { autoUpdater } = require("electron-updater");
 // Module to control application life.
 const app = electron.app;
 app.commandLine.appendSwitch("disable-features", "OutOfBlinkCors");
@@ -56,8 +56,16 @@ function createWindow() {
 
   jobs.initialize(mainWindow);
   // posts.initialize(mainWindow);
+  setInterval(() => {
+    autoUpdater.checkForUpdates();
+  }, 90000);
 }
 
+autoUpdater.on("update-downloaded", (info) => {
+  // win.webContents.send('updateReady');
+  console.log("Update", info);
+  autoUpdater.quitAndInstall();
+});
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -78,6 +86,7 @@ app.on("activate", function () {
   if (mainWindow === null) {
     createWindow();
   }
+  ƒ;
 });
 
 // In this file you can include the rest of your app's specific main process
