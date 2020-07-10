@@ -2,6 +2,7 @@ const electron = require("electron");
 const ipcMain = electron.ipcMain;
 // Module to control application life.
 const app = electron.app;
+app.commandLine.appendSwitch("disable-features", "OutOfBlinkCors");
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
@@ -25,6 +26,7 @@ function createWindow() {
     frame: false,
     webPreferences: {
       webSecurity: false,
+      nodeIntegration: true,
     },
   });
 
@@ -42,7 +44,7 @@ function createWindow() {
   mainWindow.loadURL(startUrl);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  //   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on("closed", function () {
