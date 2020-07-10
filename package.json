@@ -20,8 +20,8 @@
   "author": "Kervin y Daniel",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.0.1",
-    "electron-builder": "^20.38.4"
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
