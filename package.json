@@ -1,6 +1,6 @@
 {
   "name": "exactsnap-player",
-  "version": "2.8.4",
+  "version": "2.8.5",
   "description": "A PC based signage player for Exact Staff",
   "main": "main.js",
   "scripts": {
@@ -33,7 +33,8 @@
     "appId": "com.exactstaff.player",
     "win": {
       "target": "nsis",
-      "icon": "build/player.ico"
+      "icon": "build/player.ico",
+      "include": "build/installer.nsh"
     },
     "directories": {
       "buildResources": "."
