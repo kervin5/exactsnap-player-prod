@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "build --ia32",
+    "dist": "electron-builder build --ia32",
     "pack": "electron-builder --dir",
-    "ship": "build --ia32 -p always"
+    "ship": "electron-builder build --ia32 -p always"
   },
   "repository": "https://github.com/kervin5/exactsnap-player-prod.git",
   "keywords": [
