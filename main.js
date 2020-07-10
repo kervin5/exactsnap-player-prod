@@ -2,7 +2,7 @@ const electron = require("electron");
 const { autoUpdater } = require("electron-updater");
 // Module to control application life.
 const app = electron.app;
-app.commandLine.appendSwitch("disable-features", "OutOfBlinkCors");
+app.commandLine.appendSwitch("disable-web-security");
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
