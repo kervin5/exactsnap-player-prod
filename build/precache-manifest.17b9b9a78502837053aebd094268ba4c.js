@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "f1fe2b224569cdd12fedd25a569118f9",
-    "url": "./static/media/RAIN.f1fe2b22.svg"
+    "revision": "97f28326e03d4806f873",
+    "url": "./static/css/main.b65621db.chunk.css"
   },
   {
-    "revision": "5f9662b2cb8d8d3804de",
-    "url": "./static/css/main.8d8a3cf6.chunk.css"
+    "revision": "97f28326e03d4806f873",
+    "url": "./static/js/main.97f28326.chunk.js"
   },
   {
-    "revision": "5d9526e1af9c89bfbb35",
-    "url": "./static/js/1.5d9526e1.chunk.js"
+    "revision": "d5752d2fdce3c7e150f5",
+    "url": "./static/js/runtime~main.d5752d2f.js"
   },
   {
-    "revision": "4a686d48d5a089750c49",
-    "url": "./static/js/runtime~main.4a686d48.js"
+    "revision": "bd6241f971e48faf5d7d",
+    "url": "./static/js/2.bd6241f9.chunk.js"
   },
   {
     "revision": "669275259a9279701fac30cfac70d66c",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "./static/media/CLEAR_NIGHT.644849c6.svg"
   },
   {
-    "revision": "5f9662b2cb8d8d3804de",
-    "url": "./static/js/main.5f9662b2.chunk.js"
+    "revision": "f1fe2b224569cdd12fedd25a569118f9",
+    "url": "./static/media/RAIN.f1fe2b22.svg"
   },
   {
     "revision": "068480457526e44401960b626214009d",
@@ -60,11 +60,7 @@ self.__precacheManifest = [
     "url": "./static/media/bg.51d2a5fe.mp4"
   },
   {
-    "revision": "73e18dd9c7a27378832bb26bb6925ad3",
-    "url": "./static/media/es.73e18dd9.mp4"
-  },
-  {
-    "revision": "ce04fea9f0b4773d46029a58089f8318",
+    "revision": "bd0740db4e1a5016a41079fe9f65a857",
     "url": "./index.html"
   }
 ];
