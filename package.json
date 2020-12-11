@@ -1,6 +1,6 @@
 {
   "name": "exactsnap-player",
-  "version": "2.8.8",
+  "version": "2.8.9",
   "description": "A PC based signage player for Exact Staff",
   "main": "main.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "pack": "electron-builder --dir",
     "ship": "electron-builder build -w --ia32 -p always"
   },
-  "repository": "https://github.com/kervin5/exactsnap-player-prod.git",
+  "repository": "https://github.com/exactstaff/exactsnap-player-prod.git",
   "keywords": [
     "Electron",
     "quick",
